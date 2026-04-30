@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --color-primary: #16a34a;
+  --color-primary-dark: #15803d;
+  --color-accent: #f59e0b;
+  --color-dark: #0a0a0a;
+  --color-surface: #f8f9fa;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: #fafafa;
+  color: #1a1a1a;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #16a34a; border-radius: 3px; }
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 text-white px-6 py-3 rounded-xl font-medium 
+           hover:bg-primary-700 transition-all duration-300 
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary-600 text-primary-600 px-6 py-3 rounded-xl 
+           font-medium hover:bg-primary-600 hover:text-white transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none 
+           focus:ring-2 focus:ring-primary-500 focus:border-transparent 
+           transition-all duration-200 bg-white;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    @apply text-3xl md:text-4xl font-bold text-gray-900;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .product-card {
+    @apply bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 
+           transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .skeleton {
+    @apply animate-pulse bg-gray-200 rounded;
+  }
+}
+
+/* Page transitions */
+.page-enter {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating label inputs */
+.float-label-group {
+  position: relative;
+}
+
+.float-label-group input:focus + label,
+.float-label-group input:not(:placeholder-shown) + label {
+  transform: translateY(-24px) scale(0.85);
+  color: var(--color-primary);
+}
+
+.float-label-group label {
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  transition: all 0.2s ease;
+  pointer-events: none;
+  color: #9ca3af;
+  transform-origin: left;
+}
+
+/* Star rating */
+.stars-filled { color: #f59e0b; }
+.stars-empty { color: #e5e7eb; }
