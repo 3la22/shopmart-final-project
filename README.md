@@ -2,6 +2,8 @@
 
 A full-featured e-commerce application built with **Next.js 14**, **TypeScript**, **Tailwind CSS**, and the **RouteAcademy E-Commerce API**.
 
+🔗 Live Demo
+https://shopmart-final-project.vercel.app/
 ---
 
 ## 🚀 Quick Start
